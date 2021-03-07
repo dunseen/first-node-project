@@ -8,7 +8,7 @@ export default class CreateAppointments1615081481758 implements MigrationInterfa
         columns: [
           {
             name: 'id',
-            type: 'varchar',
+            type: 'uuid',
             isPrimary: true,
             generationStrategy: 'uuid',
             default: 'uuid_generate_v4()'
