@@ -4,22 +4,17 @@ import CreateSessionService from '../service/CreateSessionService';
 
 const sessionsRouter = Router();
 
-
 sessionsRouter.post('/', async (request, response) => {
-  try {
-    const { email, password } = request.body;
+  const { email, password } = request.body;
 
-    const createSession = new CreateSessionService();
+  const createSession = new CreateSessionService();
 
-    const { user,token } = await createSession.execute({email, password});
+  const { user, token } = await createSession.execute({ email, password });
 
-    // @ts-expect-error
-    delete user.password;
+  // @ts-expect-error
+  delete user.password;
 
-    return response.json({ user,token })
-  } catch (error) {
-    return response.status(400).json({ error: error.message });
-  }
+  return response.json({ user, token });
 });
 
 export default sessionsRouter;
